@@ -1,0 +1,35 @@
+{
+  "manifest_version": 2,
+  "name": "Slack pane",
+  "version": "1.0",
+  "description": "Load slack in an iframe",
+  "homepage_url": "https://importanthuntpoll.slack.com",
+  "icons": {
+    "48": "icons/48.png",
+    "96": "icons/2x.png"
+  },
+  "permissions": [
+    "<all_urls>", "webRequest", "webRequestBlocking","storage"
+  ],
+  "browser_action": {
+    "default_icon": "icons/38.png",
+    "default_title": "Slack pane",
+    "default_popup": "popup.html"
+  },
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "content_scripts": [
+    {
+      "matches": ["http://*/*", "https://*/*"],
+      "exclude_matches": ["http://*.slack.com/*", "https://*.slack.com/*"],
+      "js": ["slackonpage.js"]
+    },
+    {
+      "matches": ["http://*.slack.com/*", "https://*.slack.com/*"],
+      "js": ["nosidebar.js"],
+      "match_about_blank": true,
+      "all_frames": true
+    }
+  ]
+}

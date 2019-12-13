@@ -1,0 +1,31 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="popup.css">
+</head>
+
+<body>
+
+<div id="popup-content">
+    <label for="slackwidth">Slack pane default size:</label>
+    <input id="slackwidth" type="range" class="range">
+
+    <div>Toggle Slack pane with F4.</div>
+    <label for="slackvisib">Slack pane default visibility:</label>
+    <label class="switch">
+      <input type="checkbox" id="slackvisib">
+      <div class="slider round">
+        <span class="on">Show</span>
+        <span class="off">Hide</span>
+      </div>
+    </label>
+
+    <label for="slacksites">Add-slack-to regexp (1 per line):</div>
+    <textarea id="slacksites"></textarea>
+</div>
+
+<script type="text/javascript" src="popup.js"></script>
+
+</body>
+</html>
