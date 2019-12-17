@@ -1,0 +1,26 @@
+iframe.sidebar {
+    width: 100%;
+    height: 100%;
+}
+
+#slackbar {
+    position : fixed;
+    top      : 0;
+    right    : 0;
+    height   : 100%;
+    width    : 40%;
+    overflow : hidden;
+    resize   : horizontal;
+    direction: rtl;
+}
+
+#docbar {
+    position : fixed;
+    top      : 0;
+    right    : 0;
+    height   : 100%;
+    width    : 60%;
+    overflow : hidden;
+    resize   : horizontal;
+    direction: rtl;
+}

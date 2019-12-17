@@ -23,7 +23,8 @@
     {
       "matches": ["http://*/*", "https://*/*"],
       "exclude_matches": ["http://*.slack.com/*", "https://*.slack.com/*"],
-      "js": ["slackonpage.js"]
+      "js": ["slackonpage.js"],
+      "css": ["slackonpage.css"]
     },
     {
       "matches": ["http://*.slack.com/*", "https://*.slack.com/*"],

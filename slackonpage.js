@@ -10,56 +10,81 @@ var defaultVisib = true;
 var gettingAllStorageItems = browser.storage.local.get(null);
 
 gettingAllStorageItems.then((res) => {
-  var slacksites = (res.slacksites || defaultSites);
-  var slackwidth = (res.slackwidth || defaultWidth);
-  var slackvisib = (res.slackvisib == null ? defaultVisib : res.slackvisib);
+    var slacksites = (res.slacksites || defaultSites);
+    var slackwidth = (res.slackwidth || defaultWidth);
+    var slackvisib = (res.slackvisib == null ? defaultVisib : res.slackvisib);
 
-  var sidebarWidth    = "" + (100-slackwidth) + "%";
+    var sidebarWidth    = "" + (100-slackwidth) + "%";
 
-  var hit = slacksites.split('\n').reduce((hit, s) => hit || window.location.href.match(new RegExp(s)), null);
+    var hit = slacksites.split('\n').reduce((hit, s) => hit || window.location.href.match(new RegExp(s)), null);
 
-  if (hit) {
-    document.getElementsByTagName("html")[0].style.position = "relative";
+    if (hit) {
 
-    var elem = document.createElement('div');
-    elem.id = "gmRightSideBar";
-    elem.innerHTML = '<iframe width="100%" height="100%" src="https://app.slack.com/client/T0G3PD729/C0G3QKPK5"></iframe>';
-    elem.style.position = "fixed";
-    elem.style.top      = 0;
-    elem.style.right    = 0;
-    elem.style.height   = "100%";
-    elem.style.width    = sidebarWidth;
-    elem.style.overflow = "hidden";
-    elem.style.resize   = "horizontal";
-    elem.style.direction= "rtl";
-
-    if (slackvisib) {
-      document.getElementsByTagName("html")[0].style.width = "calc(100% - " + elem.style.width + ")";
-    } else {
-      document.getElementsByTagName("html")[0].style.width = "100%";
-      elem.setAttribute('hidden', 'true');
-    }
-
-    document.body.appendChild(elem);
-
-    //-- Keyboard shortcut to show/hide our sidebar
-    document.addEventListener('keydown', keyboardShortcutHandler);
-
-    function keyboardShortcutHandler (zEvent) {
-        //--- On F4, Toggle our panel's visibility
-        if (zEvent.which == 115) {  // F4
-            if (elem.hasAttribute('hidden')) {
-              elem.removeAttribute('hidden');
-              document.getElementsByTagName("html")[0].style.width = "calc(100% - " + elem.style.width + ")";
-            } else {
-              elem.setAttribute('hidden', 'true');
-              document.getElementsByTagName("html")[0].style.width = "100%";
+        function setiframe(data) {
+            function search(puzz) {
+                parser = document.createElement('a');
+                parser.href = puzz.puzzle_uri;
+                return !parser.hostname.includes("ignore.ignore") && window.location.href.includes(parser.pathname);
             }
-            zEvent.preventDefault ();
-            zEvent.stopPropagation ();
-            return false;
+            puzzdata = data.filter(search);
+            console.log(puzzdata);
+            iframe.src = puzzdata[0].drive_uri + "&rm=embed";
         }
-    }
 
-  }
-})
+        function togglediv() {
+            if (elem.hasAttribute('hidden')) {
+                elem.removeAttribute('hidden');
+                document.getElementsByTagName("html")[0].style.width = "calc(100% - " + elem.style.width + ")";
+            } else {
+                elem.setAttribute('hidden', 'true');
+                document.getElementsByTagName("html")[0].style.width = "100%";
+            }
+        }
+
+        function keyboardShortcutHandler (zEvent) {
+            //--- On F4, Toggle our panel's visibility
+            if (zEvent.which == 115) {  // F4
+                togglediv();
+                zEvent.preventDefault ();
+                zEvent.stopPropagation ();
+                return false;
+            }
+        }
+
+
+        document.getElementsByTagName("html")[0].style.position = "relative";
+
+        var iframe = document.createElement('iframe');
+        iframe.className = "sidebar";
+
+        var elem = document.createElement('div');
+        elem.id = "slackbar";
+        elem.style.width    = sidebarWidth;
+        if (slackvisib) elem.setAttribute('hidden', 'true');
+
+        togglediv();
+
+        elem.appendChild(iframe);
+        document.body.appendChild(elem);
+        //-- Keyboard shortcut to show/hide our sidebar
+        document.addEventListener('keydown', keyboardShortcutHandler);
+
+        var request = new XMLHttpRequest();
+        request.open('GET', 'https://wind-up-birds.org/puzzleboss/bin/pbrest.pl/puzzles/*', true);
+        request.onload = function() {
+            if (request.status >= 200 && request.status < 400) {
+                console.log("success")
+                setiframe(JSON.parse(request.responseText));
+            } else {
+                console.log("failure")
+                // We reached our target server, but it returned an error
+            }
+        };
+        request.onerror = function() {
+            console.log("error")
+            // There was a connection error of some sort
+        };
+        request.send();
+
+    } // if (hit)
+}) // gettingAllStorageItems.then()
