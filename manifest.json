@@ -24,14 +24,16 @@
       "matches": ["<all_urls>"],
       "exclude_matches": ["http://*.slack.com/*", "https://*.slack.com/*"],
       "js": ["utils.js", "slackonpage.js"],
-      "css": ["slackonpage.css"]
+      "css": ["slackonpage.css"],
+      "run_at": "document_end"
     },
     {
       "matches": ["http://docs.google.com/spreadsheets/*", "https://docs.google.com/spreadsheets/*"],
       "js": ["utils.js", "slackondoc.js"],
       "css": ["slackonpage.css"],
       "match_about_blank": true,
-      "all_frames": true
+      "all_frames": true,
+      "run_at": "document_start"
     },
     {
       "matches": ["http://*.slack.com/*", "https://*.slack.com/*"],
