@@ -3,6 +3,27 @@
 // @include  http://*/*
 // ==/UserScript==
 
+function setIframe(iframe, data, fromfield, tofield, extra) {
+    function search(puzz) {
+        parser = document.createElement('a');
+        parser.href = puzz[fromfield]
+        return !parser.hostname.includes("ignore.ignore") && window.location.href.includes(parser.pathname);
+    }
+    puzzdata = data.filter(search);
+    console.log(puzzdata);
+    iframe.src = puzzdata[0][tofield] + extra;
+}
+
+function toggleSidebar(elem) {
+    if (elem.hasAttribute('hidden')) {
+        elem.removeAttribute('hidden');
+        document.getElementsByTagName("html")[0].style.width = "calc(100% - " + elem.style.width + ")";
+    } else {
+        elem.setAttribute('hidden', 'true');
+        document.getElementsByTagName("html")[0].style.width = "100%";
+    }
+}
+
 var defaultSites =  ["http://web.mit.edu/puzzle/www/*", "https://web.mit.edu/puzzle/www/*"].join('\n');
 var defaultWidth = 60;
 var defaultVisib = true;
@@ -19,38 +40,15 @@ gettingAllStorageItems.then((res) => {
     var hit = slacksites.split('\n').reduce((hit, s) => hit || window.location.href.match(new RegExp(s)), null);
 
     if (hit) {
-
-        function setiframe(data) {
-            function search(puzz) {
-                parser = document.createElement('a');
-                parser.href = puzz.puzzle_uri;
-                return !parser.hostname.includes("ignore.ignore") && window.location.href.includes(parser.pathname);
-            }
-            puzzdata = data.filter(search);
-            console.log(puzzdata);
-            iframe.src = puzzdata[0].drive_uri + "&rm=embed";
-        }
-
-        function togglediv() {
-            if (elem.hasAttribute('hidden')) {
-                elem.removeAttribute('hidden');
-                document.getElementsByTagName("html")[0].style.width = "calc(100% - " + elem.style.width + ")";
-            } else {
-                elem.setAttribute('hidden', 'true');
-                document.getElementsByTagName("html")[0].style.width = "100%";
-            }
-        }
-
         function keyboardShortcutHandler (zEvent) {
             //--- On F4, Toggle our panel's visibility
             if (zEvent.which == 115) {  // F4
-                togglediv();
+                toggleSidebar(elem);
                 zEvent.preventDefault ();
                 zEvent.stopPropagation ();
                 return false;
             }
         }
-
 
         document.getElementsByTagName("html")[0].style.position = "relative";
 
@@ -62,7 +60,7 @@ gettingAllStorageItems.then((res) => {
         elem.style.width    = sidebarWidth;
         if (slackvisib) elem.setAttribute('hidden', 'true');
 
-        togglediv();
+        toggleSidebar(elem);
 
         elem.appendChild(iframe);
         document.body.appendChild(elem);
@@ -73,7 +71,7 @@ gettingAllStorageItems.then((res) => {
         request.open('GET', 'https://wind-up-birds.org/puzzleboss/bin/pbrest.pl/puzzles/*', true);
         request.onload = function() {
             if (request.status >= 200 && request.status < 400) 
-                setiframe(JSON.parse(request.responseText));
+                setIframe(iframe, JSON.parse(request.responseText), "puzzle_uri", "drive_uri", "&rm=embed");
             else 
                 console.log("We reached our target server, but it returned an error.");
         };
