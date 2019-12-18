@@ -23,7 +23,7 @@
     {
       "matches": ["<all_urls>"],
       "exclude_matches": ["http://*.slack.com/*", "https://*.slack.com/*"],
-      "js": ["slackonpage.js"],
+      "js": ["utils.js", "slackonpage.js"],
       "css": ["slackonpage.css"]
     },
     {

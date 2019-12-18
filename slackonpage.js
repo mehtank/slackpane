@@ -3,42 +3,6 @@
 // @include  http://*/*
 // ==/UserScript==
 
-function setIframe(iframe, data, fromfield, tofield, extra) {
-    function search(puzz) {
-        parser = document.createElement('a');
-        parser.href = puzz[fromfield]
-        return !parser.hostname.includes("ignore.ignore") && window.location.href.includes(parser.pathname);
-    }
-    puzzdata = data.filter(search);
-    console.log(puzzdata);
-    iframe.src = puzzdata[0][tofield] + extra;
-}
-
-function toggleSidebar(elem) {
-    if (elem.hasAttribute('hidden')) {
-        elem.removeAttribute('hidden');
-        document.getElementsByTagName("html")[0].style.width = "calc(100% - " + elem.style.width + ")";
-    } else {
-        elem.setAttribute('hidden', 'true');
-        document.getElementsByTagName("html")[0].style.width = "100%";
-    }
-}
-
-function getJSON(fn) {
-    var request = new XMLHttpRequest();
-    request.open('GET', 'https://wind-up-birds.org/puzzleboss/bin/pbrest.pl/puzzles/*', true);
-    request.onload = function() {
-        if (request.status >= 200 && request.status < 400) 
-            fn(JSON.parse(request.responseText));
-        else 
-            console.log("We reached our target server, but it returned an error.");
-    };
-    request.onerror = function() {
-        console.log("There was a connection error of some sort");
-    };
-    request.send();
-}
-
 var defaultSites =  ["http://web.mit.edu/puzzle/www/*", "https://web.mit.edu/puzzle/www/*"].join('\n');
 var defaultWidth = 60;
 var defaultVisib = true;
