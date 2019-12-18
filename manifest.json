@@ -1,8 +1,8 @@
 {
   "manifest_version": 2,
-  "name": "Slack pane",
-  "version": "1.2",
-  "description": "Load slack in an iframe",
+  "name": "GDoc/Slack pane",
+  "version": "1.3",
+  "description": "Load gdocs/slack in iframes",
   "homepage_url": "https://importanthuntpoll.slack.com",
   "icons": {
     "48": "icons/48.png",
@@ -17,27 +17,27 @@
     "default_popup": "popup.html"
   },
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["browser-polyfill.js", "background.js"]
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "exclude_matches": ["http://*.slack.com/*", "https://*.slack.com/*"],
-      "js": ["utils.js", "slackonpage.js"],
+      "js": ["browser-polyfill.js", "utils.js", "slackonpage.js"],
       "css": ["slackonpage.css"],
       "run_at": "document_end"
     },
     {
       "matches": ["http://docs.google.com/spreadsheets/*", "https://docs.google.com/spreadsheets/*"],
-      "js": ["utils.js", "slackondoc.js"],
+      "js": ["browser-polyfill.js", "utils.js", "slackondoc.js"],
       "css": ["slackonpage.css"],
       "match_about_blank": true,
       "all_frames": true,
-      "run_at": "document_start"
+      "run_at": "document_end"
     },
     {
       "matches": ["http://*.slack.com/*", "https://*.slack.com/*"],
-      "js": ["nosidebar.js"],
+      "js": ["browser-polyfill.js", "nosidebar.js"],
       "match_about_blank": true,
       "all_frames": true
     }

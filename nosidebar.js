@@ -4,6 +4,9 @@ if(window.top!==window.self) {
       grid-template-areas: "p-workspace__banner p-workspace__banner" "p-workspace__top_nav p-workspace__top_nav" "p-workspace__primary_view p-workspace__primary_view"; \
   }                                       \
                                           \
+  .p-classic_nav__right_header,           \
+  .p-classic_nav__team_header,            \
+  .p-classic_nav__model__buttons,         \
   .p-workspace__sidebar {                 \
       display: none !important;           \
   }                                       \
