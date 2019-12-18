@@ -17,19 +17,19 @@
     "default_popup": "popup.html"
   },
   "background": {
-    "scripts": ["browser-polyfill.js", "background.js"]
+    "scripts": ["background.js"]
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "exclude_matches": ["http://*.slack.com/*", "https://*.slack.com/*"],
-      "js": ["browser-polyfill.js", "utils.js", "slackonpage.js"],
+      "js": ["utils.js", "slackonpage.js"],
       "css": ["slackonpage.css"],
       "run_at": "document_end"
     },
     {
       "matches": ["http://docs.google.com/spreadsheets/*", "https://docs.google.com/spreadsheets/*"],
-      "js": ["browser-polyfill.js", "utils.js", "slackondoc.js"],
+      "js": ["utils.js", "slackondoc.js"],
       "css": ["slackonpage.css"],
       "match_about_blank": true,
       "all_frames": true,
@@ -37,7 +37,7 @@
     },
     {
       "matches": ["http://*.slack.com/*", "https://*.slack.com/*"],
-      "js": ["browser-polyfill.js", "nosidebar.js"],
+      "js": ["nosidebar.js"],
       "match_about_blank": true,
       "all_frames": true
     }
