@@ -1,4 +1,4 @@
-function setIframe(iframe, data, fromfield, tofield, extra) {
+function setIframe(iframe, data, fromfield, tofield, fmt = (x)=>x ) {
     function search(puzz) {
         parser = document.createElement('a');
         parser.href = puzz[fromfield]
@@ -6,7 +6,7 @@ function setIframe(iframe, data, fromfield, tofield, extra) {
     }
     puzzdata = data.filter(search);
     console.log(puzzdata);
-    iframe.src = puzzdata[0][tofield] + extra;
+    iframe.src = fmt(puzzdata[0][tofield]);
 }
 
 function toggleSidebar(elem) {

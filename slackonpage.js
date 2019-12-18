@@ -46,7 +46,7 @@ gettingAllStorageItems.then((res) => {
         //-- Keyboard shortcut to show/hide our sidebar
         document.addEventListener('keydown', keyboardShortcutHandler);
 
-        getJSON((data) => setIframe(iframe, data, "puzzle_uri", "drive_uri", "&rm=embed"));
+        getJSON((data) => setIframe(iframe, data, "puzzle_uri", "drive_uri", (x) => `${x}&rm=embed`));
 
     } // if (hit)
 }) // gettingAllStorageItems.then()
