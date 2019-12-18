@@ -4,7 +4,7 @@
 // ==/UserScript==
 
 var defaultSites =  ["http://web.mit.edu/puzzle/www/*", "https://web.mit.edu/puzzle/www/*"].join('\n');
-var defaultWidth = 60;
+var defaultWidth = 50;
 var defaultVisib = true;
 
 var gettingAllStorageItems = browser.storage.local.get(null);
