@@ -24,6 +24,21 @@ function toggleSidebar(elem) {
     }
 }
 
+function getJSON(fn) {
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://wind-up-birds.org/puzzleboss/bin/pbrest.pl/puzzles/*', true);
+    request.onload = function() {
+        if (request.status >= 200 && request.status < 400) 
+            fn(JSON.parse(request.responseText));
+        else 
+            console.log("We reached our target server, but it returned an error.");
+    };
+    request.onerror = function() {
+        console.log("There was a connection error of some sort");
+    };
+    request.send();
+}
+
 var defaultSites =  ["http://web.mit.edu/puzzle/www/*", "https://web.mit.edu/puzzle/www/*"].join('\n');
 var defaultWidth = 60;
 var defaultVisib = true;
@@ -67,18 +82,7 @@ gettingAllStorageItems.then((res) => {
         //-- Keyboard shortcut to show/hide our sidebar
         document.addEventListener('keydown', keyboardShortcutHandler);
 
-        var request = new XMLHttpRequest();
-        request.open('GET', 'https://wind-up-birds.org/puzzleboss/bin/pbrest.pl/puzzles/*', true);
-        request.onload = function() {
-            if (request.status >= 200 && request.status < 400) 
-                setIframe(iframe, JSON.parse(request.responseText), "puzzle_uri", "drive_uri", "&rm=embed");
-            else 
-                console.log("We reached our target server, but it returned an error.");
-        };
-        request.onerror = function() {
-            console.log("There was a connection error of some sort");
-        };
-        request.send();
+        getJSON((data) => setIframe(iframe, data, "puzzle_uri", "drive_uri", "&rm=embed"));
 
     } // if (hit)
 }) // gettingAllStorageItems.then()
