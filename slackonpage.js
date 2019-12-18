@@ -21,25 +21,16 @@ gettingAllStorageItems.then((res) => {
     if (hit) {
         document.getElementsByTagName("html")[0].style.position = "relative";
 
-        var iframe = document.createElement('iframe');
-        iframe.className = "sidebar";
-
-        var elem = document.createElement('div');
-        elem.id = "slackbar";
-        elem.style.width    = sidebarWidth;
-        if (slackvisib) elem.setAttribute('hidden', 'true');
-
-        toggleSidebar(elem);
-
-        elem.appendChild(iframe);
-        document.body.appendChild(elem);
+        elems = addIframe("spRightPanel", "spSidebar", sidebarWidth, slackvisib);
+        div = elems.div;
+        iframe = elems.iframe;
 
         //-- Keyboard shortcut to show/hide our sidebar
-        addListener(115, () => toggleSidebar(elem));
+        addListener(115, () => toggleSidebar(div));
 
         getJSON().then(
           (data) => setIframe(iframe, data, "puzzle_uri", "drive_uri", (x) => `${x}&rm=embed`)
         );
 
-    } // if (hit)
-}) // gettingAllStorageItems.then()
+    } 
+}) 

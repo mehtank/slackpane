@@ -5,7 +5,7 @@ function setIframe(iframe, data, fromfield, tofield, fmt = (x)=>x ) {
         return !parser.hostname.includes("ignore.ignore") && window.location.href.includes(parser.pathname);
     }
     puzzdata = data.filter(search);
-    console.log(puzzdata);
+    //console.log(puzzdata);
     iframe.src = fmt(puzzdata[0][tofield]);
 }
 
@@ -54,4 +54,20 @@ function addListener(which, fn) {
         }
     }
     document.addEventListener('keydown', keyboardShortcutHandler);
+}
+
+function addIframe(divid, ifclass, width, visible, container=document.body) {
+    var iframe = document.createElement('iframe');
+    iframe.className = ifclass;
+
+    var elem = document.createElement('div');
+    elem.id = divid;
+    elem.style.width = width;
+    if (visible) elem.setAttribute('hidden', 'true');
+
+    toggleSidebar(elem);
+
+    elem.appendChild(iframe);
+    container.appendChild(elem);
+    return {"div": elem, "iframe": iframe };
 }

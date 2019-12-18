@@ -18,22 +18,17 @@ Promise.all([gettingAllStorageItems, gj]).then((arr) => {
     var hit = slacksites.reduce((hit, s) => hit || window.location.href.includes(s), false);
 
     if (hit) {
+
         document.getElementsByTagName("html")[0].style.position = "relative";
 
-        var iframe = document.createElement('iframe');
-        iframe.className = "sidebar";
+        elems = addIframe("spRightPanel", "spSidebar", sidebarWidth, slackvisib);
+        div = elems.div;
+        iframe = elems.iframe;
 
-        var elem = document.createElement('div');
-        elem.id = "slackbar";
-        elem.style.width    = sidebarWidth;
-        if (slackvisib) elem.setAttribute('hidden', 'true');
-
-        toggleSidebar(elem);
-
-        elem.appendChild(iframe);
-        document.body.appendChild(elem);
+        //-- Keyboard shortcut to show/hide our sidebar
+        addListener(115, () => toggleSidebar(div));
 
         setIframe(iframe, data, "drive_uri", "slack_channel_id", (x) => `https://app.slack.com/client/T0G3PD729/${x}`);
 
-    } // if (hit)
-}) // Promise.all().then()
+    } 
+}) 
