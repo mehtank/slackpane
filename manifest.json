@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Slack pane",
-  "version": "1.1",
+  "version": "1.2",
   "description": "Load slack in an iframe",
   "homepage_url": "https://importanthuntpoll.slack.com",
   "icons": {
@@ -29,7 +29,9 @@
     {
       "matches": ["http://docs.google.com/spreadsheets/*", "https://docs.google.com/spreadsheets/*"],
       "js": ["utils.js", "slackondoc.js"],
-      "css": ["slackonpage.css"]
+      "css": ["slackonpage.css"],
+      "match_about_blank": true,
+      "all_frames": true
     },
     {
       "matches": ["http://*.slack.com/*", "https://*.slack.com/*"],
