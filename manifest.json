@@ -27,6 +27,11 @@
       "css": ["slackonpage.css"]
     },
     {
+      "matches": ["http://docs.google.com/spreadsheets/*", "https://docs.google.com/spreadsheets/*"],
+      "js": ["utils.js", "slackondoc.js"],
+      "css": ["slackonpage.css"]
+    },
+    {
       "matches": ["http://*.slack.com/*", "https://*.slack.com/*"],
       "js": ["nosidebar.js"],
       "match_about_blank": true,
