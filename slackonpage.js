@@ -19,16 +19,6 @@ gettingAllStorageItems.then((res) => {
     var hit = slacksites.split('\n').reduce((hit, s) => hit || window.location.href.match(new RegExp(s)), null);
 
     if (hit) {
-        function keyboardShortcutHandler (zEvent) {
-            //--- On F4, Toggle our panel's visibility
-            if (zEvent.which == 115) {  // F4
-                toggleSidebar(elem);
-                zEvent.preventDefault ();
-                zEvent.stopPropagation ();
-                return false;
-            }
-        }
-
         document.getElementsByTagName("html")[0].style.position = "relative";
 
         var iframe = document.createElement('iframe');
@@ -43,10 +33,22 @@ gettingAllStorageItems.then((res) => {
 
         elem.appendChild(iframe);
         document.body.appendChild(elem);
+
         //-- Keyboard shortcut to show/hide our sidebar
         document.addEventListener('keydown', keyboardShortcutHandler);
+        function keyboardShortcutHandler (zEvent) {
+            //--- On F4, Toggle our panel's visibility
+            if (zEvent.which == 115) {  // F4
+                toggleSidebar(elem);
+                zEvent.preventDefault ();
+                zEvent.stopPropagation ();
+                return false;
+            }
+        }
 
-        getJSON((data) => setIframe(iframe, data, "puzzle_uri", "drive_uri", (x) => `${x}&rm=embed`));
+        getJSON().then(
+          (data) => setIframe(iframe, data, "puzzle_uri", "drive_uri", (x) => `${x}&rm=embed`)
+        );
 
     } // if (hit)
 }) // gettingAllStorageItems.then()

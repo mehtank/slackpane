@@ -19,17 +19,27 @@ function toggleSidebar(elem) {
     }
 }
 
-function getJSON(fn) {
-    var request = new XMLHttpRequest();
-    request.open('GET', 'https://wind-up-birds.org/puzzleboss/bin/pbrest.pl/puzzles/*', true);
-    request.onload = function() {
-        if (request.status >= 200 && request.status < 400) 
-            fn(JSON.parse(request.responseText));
-        else 
-            console.log("We reached our target server, but it returned an error.");
+function getJSON () {
+  var xhr = new XMLHttpRequest();
+  return new Promise(function (resolve, reject) {
+    xhr.open('GET', 'https://wind-up-birds.org/puzzleboss/bin/pbrest.pl/puzzles/*', true);
+    xhr.onload = function () {
+      if (this.status >= 200 && this.status < 300) {
+        resolve(JSON.parse(xhr.responseText));
+      } else {
+        reject({
+          status: this.status,
+          statusText: xhr.statusText
+        });
+      }
     };
-    request.onerror = function() {
-        console.log("There was a connection error of some sort");
+    xhr.onerror = function () {
+      reject({
+        status: this.status,
+        statusText: xhr.statusText
+      });
     };
-    request.send();
+    xhr.send();
+  });
 }
+
