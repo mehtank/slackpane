@@ -1,27 +1,27 @@
 // ==UserScript==
-// @name     Slack on page
+// @name     GDoc on puzzle page
 // @include  http://*/*
 // ==/UserScript==
 
 var defaultSites =  ["http://web.mit.edu/puzzle/www/*", "https://web.mit.edu/puzzle/www/*"].join('\n');
-var defaultWidth = 50;
+var defaultWidth = 40;
 var defaultVisib = true;
 
 var gettingAllStorageItems = browser.storage.local.get(null);
 
 gettingAllStorageItems.then((res) => {
-    var slacksites = (res.slacksites || defaultSites);
-    var slackwidth = (res.slackwidth || defaultWidth);
-    var slackvisib = (res.slackvisib == null ? defaultVisib : res.slackvisib);
+    var puzzsites = (res.puzzsites || defaultSites);
+    var gdocwidth = (res.gdocwidth || defaultWidth);
+    var gdocvisib = (res.gdocvisib == null ? defaultVisib : res.gdocvisib);
 
-    var sidebarWidth    = "" + (100-slackwidth) + "%";
+    var sidebarWidth    = "" + (100-gdocwidth) + "%";
 
-    var hit = slacksites.split('\n').reduce((hit, s) => hit || window.location.href.match(new RegExp(s)), null);
+    var hit = puzzsites.split('\n').reduce((hit, s) => hit || window.location.href.match(new RegExp(s)), null);
 
     if (hit) {
         document.getElementsByTagName("html")[0].style.position = "relative";
 
-        elems = addIframe("spRightPanel", "spSidebar", sidebarWidth, slackvisib);
+        elems = addIframe("spGdocPanel", "spSidebar", sidebarWidth, gdocvisib);
         div = elems.div;
         iframe = elems.iframe;
 

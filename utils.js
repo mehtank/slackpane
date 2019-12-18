@@ -61,6 +61,7 @@ function addIframe(divid, ifclass, width, visible, container=document.body) {
     iframe.className = ifclass;
 
     var elem = document.createElement('div');
+    elem.className = "spSidePanel";
     elem.id = divid;
     elem.style.width = width;
     if (visible) elem.setAttribute('hidden', 'true');

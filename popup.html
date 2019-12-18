@@ -8,11 +8,12 @@
 <body>
 
 <div id="popup-content">
+
     <label for="slackwidth">Slack pane default size:</label>
-    <input id="slackwidth" type="range" class="range">
+    <input id="slackwidth" type="range" class="range prange">
 
     <div>Toggle Slack pane with F4.</div>
-    <label for="slackvisib">Slack pane default visibility:</label>
+    <label for="slackvisib">Slack pane on Googledoc by default:</label>
     <label class="switch">
       <input type="checkbox" id="slackvisib">
       <div class="slider round">
@@ -21,8 +22,21 @@
       </div>
     </label>
 
-    <label for="slacksites">Add-slack-to regexp (1 per line):</div>
-    <textarea id="slacksites"></textarea>
+    <label for="gdocwidth">Googledoc pane default size:</label>
+    <input id="gdocwidth" type="range" class="range grange">
+
+    <div>Toggle Googledoc pane with F4.</div>
+    <label for="gdocvisib">Googledoc pane on puzzle page by default:</label>
+    <label class="switch">
+      <input type="checkbox" id="gdocvisib">
+      <div class="slider round">
+        <span class="on">Show</span>
+        <span class="off">Hide</span>
+      </div>
+    </label>
+
+    <label for="puzzsites">Hunt pages regexp (1 per line):</div>
+    <textarea id="puzzsites"></textarea>
 </div>
 
 <script type="text/javascript" src="popup.js"></script>

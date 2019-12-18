@@ -30,7 +30,12 @@ textarea {
   height: 50px;
 }
 
-.range::-moz-range-track {
+.grange::-moz-range-track {
+  background-color: green;
+  height: 50px;
+}
+
+.prange::-moz-range-track {
   background-color: purple;
   height: 50px;
 }
@@ -38,7 +43,7 @@ textarea {
 .range::-moz-range-thumb {
   width: 5px; /* Set a specific slider handle width */
   height: 50px; /* Slider handle height */
-  background: purple; /* Green background */
+  background: black; /* Green background */
   cursor: ew-resize; /* Cursor on hover */
 }
 

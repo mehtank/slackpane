@@ -3,7 +3,7 @@ iframe.spSidebar {
     height: 100%;
 }
 
-#spRightPanel {
+.spSidePanel {
     position : fixed;
     top      : 0;
     right    : 0;
@@ -12,17 +12,12 @@ iframe.spSidebar {
     overflow : hidden;
     resize   : horizontal;
     direction: rtl;
+}
+
+#spSlackPanel {
     z-index  : 99999;
 }
 
-#spMiddlePanel {
-    position : fixed;
-    top      : 0;
-    right    : 0;
-    height   : 100%;
-    width    : 50%;
-    overflow : hidden;
-    resize   : horizontal;
-    direction: rtl;
-    z-index  : 99999;
+#spGdocPanel {
+    z-index  : 999;
 }

@@ -11,7 +11,6 @@ Promise.all([gettingAllStorageItems, gj]).then((arr) => {
 
     data = arr[1];
     var slacksites = data.map(({ drive_id }) => drive_id);
-    console.log(slacksites);
 
     var sidebarWidth    = "" + (100-slackwidth) + "%";
 
@@ -21,7 +20,7 @@ Promise.all([gettingAllStorageItems, gj]).then((arr) => {
 
         document.getElementsByTagName("html")[0].style.position = "relative";
 
-        elems = addIframe("spRightPanel", "spSidebar", sidebarWidth, slackvisib);
+        elems = addIframe("spSlackPanel", "spSidebar", sidebarWidth, slackvisib);
         div = elems.div;
         iframe = elems.iframe;
 
