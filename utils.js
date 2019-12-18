@@ -43,3 +43,15 @@ function getJSON () {
   });
 }
 
+function addListener(which, fn) {
+    function keyboardShortcutHandler (zEvent) {
+        //--- On F4, Toggle our panel's visibility
+        if (zEvent.which == which) {  
+            fn() ;
+            zEvent.preventDefault ();
+            zEvent.stopPropagation ();
+            return false;
+        }
+    }
+    document.addEventListener('keydown', keyboardShortcutHandler);
+}

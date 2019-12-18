@@ -35,16 +35,7 @@ gettingAllStorageItems.then((res) => {
         document.body.appendChild(elem);
 
         //-- Keyboard shortcut to show/hide our sidebar
-        document.addEventListener('keydown', keyboardShortcutHandler);
-        function keyboardShortcutHandler (zEvent) {
-            //--- On F4, Toggle our panel's visibility
-            if (zEvent.which == 115) {  // F4
-                toggleSidebar(elem);
-                zEvent.preventDefault ();
-                zEvent.stopPropagation ();
-                return false;
-            }
-        }
+        addListener(115, () => toggleSidebar(elem));
 
         getJSON().then(
           (data) => setIframe(iframe, data, "puzzle_uri", "drive_uri", (x) => `${x}&rm=embed`)
