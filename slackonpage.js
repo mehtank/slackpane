@@ -72,17 +72,13 @@ gettingAllStorageItems.then((res) => {
         var request = new XMLHttpRequest();
         request.open('GET', 'https://wind-up-birds.org/puzzleboss/bin/pbrest.pl/puzzles/*', true);
         request.onload = function() {
-            if (request.status >= 200 && request.status < 400) {
-                console.log("success")
+            if (request.status >= 200 && request.status < 400) 
                 setiframe(JSON.parse(request.responseText));
-            } else {
-                console.log("failure")
-                // We reached our target server, but it returned an error
-            }
+            else 
+                console.log("We reached our target server, but it returned an error.");
         };
         request.onerror = function() {
-            console.log("error")
-            // There was a connection error of some sort
+            console.log("There was a connection error of some sort");
         };
         request.send();
 
