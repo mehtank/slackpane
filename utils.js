@@ -80,10 +80,11 @@ function addIframe(divid, ifclass, width, visible, toggle=115, container=documen
 
     elem.appendChild(iframe);
     container.appendChild(elem);
-    return {"div": elem, "iframe": iframe };
 
     //-- Keyboard shortcut to show/hide our sidebar
     addListener(toggle, () => toggleSidebar(elem));
     handleResize(elem);
     doResize(elem);
+
+    return {"div": elem, "iframe": iframe };
 }
