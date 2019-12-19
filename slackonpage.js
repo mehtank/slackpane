@@ -21,11 +21,15 @@ gettingAllStorageItems.then((res) => {
     if (hit) {
         document.getElementsByTagName("html")[0].style.position = "relative";
 
-        elems = addIframe("spGdocPanel", "spSidebar", sidebarWidth, gdocvisib);
+        elems = addIframe("spGdocPanel", "spSidebar", sidebarWidth, false);
+        div = elems.div;
         iframe = elems.iframe;
 
         getJSON().then(
-          (data) => setIframe(iframe, data, "puzzle_uri", "drive_uri", (x) => `${x}&rm=embedded`)
+          (data) => {
+            setIframe(iframe, data, "puzzle_uri", "drive_uri", (x) => `${x}&rm=embedded`);
+            if (gdocvisib) toggleSidebar(div);
+          }
         );
 
     } 
