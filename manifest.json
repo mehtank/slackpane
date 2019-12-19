@@ -5,14 +5,14 @@
   "description": "Load gdocs/slack in iframes",
   "homepage_url": "https://wind-up-birds.org",
   "icons": {
-    "48": "icons/48.png",
-    "96": "icons/2x.png"
+    "48": "icons/uscensus.svg",
+    "96": "icons/uscensus.svg"
   },
   "permissions": [
     "<all_urls>", "webRequest", "webRequestBlocking","storage"
   ],
   "browser_action": {
-    "default_icon": "icons/38.png",
+    "default_icon": "icons/uscensus.svg",
     "default_title": "Slack pane",
     "default_popup": "popup.html"
   },
