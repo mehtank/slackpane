@@ -29,7 +29,7 @@ gettingAllStorageItems.then((res) => {
         addListener(115, () => toggleSidebar(div));
 
         getJSON().then(
-          (data) => setIframe(iframe, data, "puzzle_uri", "drive_uri", (x) => `${x}&rm=embed`)
+          (data) => setIframe(iframe, data, "puzzle_uri", "drive_uri", (x) => `${x}&rm=embedded`)
         );
 
     } 
