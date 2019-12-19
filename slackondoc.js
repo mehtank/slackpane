@@ -21,11 +21,7 @@ Promise.all([gettingAllStorageItems, gj]).then((arr) => {
         document.getElementsByTagName("html")[0].style.position = "relative";
 
         elems = addIframe("spSlackPanel", "spSidebar", sidebarWidth, slackvisib);
-        div = elems.div;
         iframe = elems.iframe;
-
-        //-- Keyboard shortcut to show/hide our sidebar
-        addListener(115, () => toggleSidebar(div));
 
         setIframe(iframe, data, "drive_uri", "slack_channel_id", (x) => `https://app.slack.com/client/T0G3PD729/${x}`);
 

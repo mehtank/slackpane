@@ -22,11 +22,7 @@ gettingAllStorageItems.then((res) => {
         document.getElementsByTagName("html")[0].style.position = "relative";
 
         elems = addIframe("spGdocPanel", "spSidebar", sidebarWidth, gdocvisib);
-        div = elems.div;
         iframe = elems.iframe;
-
-        //-- Keyboard shortcut to show/hide our sidebar
-        addListener(115, () => toggleSidebar(div));
 
         getJSON().then(
           (data) => setIframe(iframe, data, "puzzle_uri", "drive_uri", (x) => `${x}&rm=embedded`)

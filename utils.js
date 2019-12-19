@@ -12,10 +12,8 @@ function setIframe(iframe, data, fromfield, tofield, fmt = (x)=>x ) {
 function toggleSidebar(elem) {
     if (elem.hasAttribute('hidden')) {
         elem.removeAttribute('hidden');
-        document.getElementsByTagName("html")[0].style.width = "calc(100% - " + elem.style.width + ")";
     } else {
         elem.setAttribute('hidden', 'true');
-        document.getElementsByTagName("html")[0].style.width = "100%";
     }
 }
 
@@ -43,6 +41,20 @@ function getJSON () {
   });
 }
 
+function doResize(elem) {
+    if (elem.hasAttribute('hidden'))
+        document.getElementsByTagName("html")[0].style.width = "100%";
+    else
+        document.getElementsByTagName("html")[0].style.width = "calc(100% - " + elem.style.width + ")";
+}
+
+function handleResize(elem) {
+    let observer = new MutationObserver(function(mutations) {
+        doResize(elem);
+    });
+    observer.observe(elem, { attributes: true });
+}
+
 function addListener(which, fn) {
     function keyboardShortcutHandler (zEvent) {
         //--- On F4, Toggle our panel's visibility
@@ -56,7 +68,7 @@ function addListener(which, fn) {
     document.addEventListener('keydown', keyboardShortcutHandler);
 }
 
-function addIframe(divid, ifclass, width, visible, container=document.body) {
+function addIframe(divid, ifclass, width, visible, toggle=115, container=document.body) {
     var iframe = document.createElement('iframe');
     iframe.className = ifclass;
 
@@ -64,11 +76,14 @@ function addIframe(divid, ifclass, width, visible, container=document.body) {
     elem.className = "spSidePanel";
     elem.id = divid;
     elem.style.width = width;
-    if (visible) elem.setAttribute('hidden', 'true');
-
-    toggleSidebar(elem);
+    if (!visible) elem.setAttribute('hidden', 'true');
 
     elem.appendChild(iframe);
     container.appendChild(elem);
     return {"div": elem, "iframe": iframe };
+
+    //-- Keyboard shortcut to show/hide our sidebar
+    addListener(toggle, () => toggleSidebar(elem));
+    handleResize(elem);
+    doResize(elem);
 }
