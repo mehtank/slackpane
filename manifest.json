@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
-  "name": "GDoc/Slack pane",
-  "version": "1.5",
+  "name": "Important hunt poll",
+  "version": "1.6",
   "description": "Load gdocs/slack in iframes",
-  "homepage_url": "https://importanthuntpoll.slack.com",
+  "homepage_url": "https://wind-up-birds.org",
   "icons": {
     "48": "icons/48.png",
     "96": "icons/2x.png"
