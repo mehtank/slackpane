@@ -4,6 +4,13 @@ if(window.top!==window.self) {
       grid-template-areas: "p-workspace__banner p-workspace__banner" "p-workspace__top_nav p-workspace__top_nav" "p-workspace__primary_view p-workspace__primary_view"; \
   }                                       \
                                           \
+  .p-workspace__input .p-message_input_field:not(.c-texty_input--expanded) { \
+      padding-left: 5px;                  \
+  }                                       \
+  .c-message--light .c-message__content--feature_sonic_inputs { \
+      margin-left: 20px;                  \
+  }                                       \
+  .c-message__gutter,                     \
   .p-classic_nav__right_header,           \
   .p-classic_nav__team_header,            \
   .p-classic_nav__model__buttons,         \
