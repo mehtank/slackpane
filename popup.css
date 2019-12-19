@@ -18,7 +18,6 @@ textarea {
        resize: vertical;
        word-wrap: normal ;
        white-space: pre;
-       height: 100px
 }
 
 .range {

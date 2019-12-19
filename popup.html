@@ -9,34 +9,50 @@
 
 <div id="popup-content">
 
-    <label for="slackwidth">Slack pane default size:</label>
-    <input id="slackwidth" type="range" class="range prange">
+    <div style="padding: 5px">
+      <b>Use F4 to toggle panes:</b> 
+      <ul style="margin: 5px">
+        <li>with focus in Googledoc, F4 toggles Slack; </li>
+        <li>with focus on puzzle page, F4 toggles Googledoc [ and Slack ]. </li>
+      </ul>
+      <b>Resize panes using the handle on the bottom left of each pane;</b>
+      set default pane sizes below.
+    </div>
 
-    <div>Toggle Slack pane with F4.</div>
-    <label for="slackvisib">Slack pane on Googledoc by default:</label>
-    <label class="switch">
-      <input type="checkbox" id="slackvisib">
-      <div class="slider round">
-        <span class="on">Show</span>
-        <span class="off">Hide</span>
-      </div>
-    </label>
+    <div style="background: lavender; padding: 5px">
 
-    <label for="gdocwidth">Googledoc pane default size:</label>
-    <input id="gdocwidth" type="range" class="range grange">
+      <label for="slackvisib">Slack pane visible on Googledoc by default:</label>
+      <label class="switch">
+        <input type="checkbox" id="slackvisib">
+        <div class="slider round">
+          <span class="on">Show</span>
+          <span class="off">Hide</span>
+        </div>
+      </label>
 
-    <div>Toggle Googledoc pane with F4.</div>
-    <label for="gdocvisib">Googledoc pane on puzzle page by default:</label>
-    <label class="switch">
-      <input type="checkbox" id="gdocvisib">
-      <div class="slider round">
-        <span class="on">Show</span>
-        <span class="off">Hide</span>
-      </div>
-    </label>
+      <label for="slackwidth">Slack pane default size:</label>
+      <input id="slackwidth" type="range" class="range prange">
+    </div>
 
-    <label for="puzzsites">Hunt pages regexp (1 per line):</div>
-    <textarea id="puzzsites"></textarea>
+    <div style="background: honeydew; padding: 5px">
+
+      <label for="gdocvisib">Googledoc pane on puzzle page by default:</label>
+      <label class="switch">
+        <input type="checkbox" id="gdocvisib">
+        <div class="slider round">
+          <span class="on">Show</span>
+          <span class="off">Hide</span>
+        </div>
+      </label>
+
+      <label for="gdocwidth">Googledoc pane default size:</label>
+      <input id="gdocwidth" type="range" class="range grange">
+    </div>
+
+    <div style="background: lightcoral; padding: 5px">
+      <label for="puzzsites">Hunt pages regexp (1 per line):</label>
+      <textarea rows=4 id="puzzsites"></textarea>
+    </div>
 </div>
 
 <script type="text/javascript" src="popup.js"></script>
