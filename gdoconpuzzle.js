@@ -27,8 +27,8 @@ gettingAllStorageItems.then((res) => {
 
         getJSON().then(
           (data) => {
-            setIframe(iframe, data, "puzzle_uri", "drive_uri", (x) => `${x}&rm=embedded`);
-            if (gdocvisib) toggleSidebar(div);
+            found = setIframe(iframe, data, "puzzle_uri", "drive_uri", (x) => `${x}&rm=embedded`);
+            if (found && gdocvisib) toggleSidebar(div);
           }
         );
 

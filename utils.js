@@ -6,7 +6,11 @@ function setIframe(iframe, data, fromfield, tofield, fmt = (x)=>x ) {
     }
     puzzdata = data.filter(search);
     //console.log(puzzdata);
-    iframe.src = fmt(puzzdata[0][tofield]);
+    if (puzzdata && puzzdata.length) {
+      iframe.src = fmt(puzzdata[0][tofield]);
+      return true;
+    }
+    return false;
 }
 
 function toggleSidebar(elem) {
