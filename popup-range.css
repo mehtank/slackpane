@@ -1,0 +1,67 @@
+.range {
+  -webkit-appearance: none; /* Hides the slider so that custom slider can be made */
+  background: transparent; /* Otherwise white in Chrome */
+  height: 50px; 
+}
+
+.range::-moz-range-progress {
+  background-color: lightgrey;
+  height: 50px;
+}
+
+.range::-ms-fill-lower {
+  background-color: lightgrey;
+  height: 50px;
+}
+
+.grange::-webkit-slider-runnable-track {
+  background-color: green;
+  height: 50px;
+}
+
+.prange::-webkit-slider-runnable-track {
+  background-color: purple;
+  height: 50px;
+}
+
+.grange::-moz-range-track {
+  background-color: green;
+  height: 50px;
+}
+
+.prange::-moz-range-track {
+  background-color: purple;
+  height: 50px;
+}
+
+.grange::-ms-track {
+  background-color: green;
+  height: 50px;
+}
+
+.prange::-ms-track {
+  background-color: purple;
+  height: 50px;
+}
+
+.range::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 5px; /* Set a specific slider handle width */
+  height: 50px; /* Slider handle height */
+  background: black; /* Green background */
+  cursor: ew-resize; /* Cursor on hover */
+}
+
+.range::-moz-range-thumb {
+  width: 5px; /* Set a specific slider handle width */
+  height: 50px; /* Slider handle height */
+  background: black; /* Green background */
+  cursor: ew-resize; /* Cursor on hover */
+}
+
+.range::-ms-thumb {
+  width: 5px; /* Set a specific slider handle width */
+  height: 50px; /* Slider handle height */
+  background: black; /* Green background */
+  cursor: ew-resize; /* Cursor on hover */
+}
