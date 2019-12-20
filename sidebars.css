@@ -14,6 +14,19 @@ iframe.spSidebar {
     direction: rtl;
 }
 
+.spSidePanel:after {
+    border-top: 0.5em solid transparent;
+    border-right: 0.5em solid transparent;
+    border-left: 0.5em solid rgba(255, 255, 255, 0.5);
+    border-bottom: 0.5em solid rgba(255, 255, 255, 0.5);
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    content: '';
+    height: 50px;
+    width: 50px;
+}
+
 #spSlackPanel {
     z-index  : 99999;
 }
