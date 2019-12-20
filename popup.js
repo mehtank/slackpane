@@ -3,31 +3,25 @@ var defaultSlackWidth = 50;
 var defaultGDocWidth = 40;
 var defaultVisib = true;
 
-browser.storage.local.get("puzzsites", function(res) {
+var gettingAllStorageItems = browser.storage.local.get(null);
+
+gettingAllStorageItems.then((res) => {
   var puzzsites = (res.puzzsites || defaultSites);
   elem = document.querySelector("#puzzsites")
   if (elem) elem.value=puzzsites;
-});
 
-browser.storage.local.get("slackwidth", function(res) {
   var slackwidth = (res.slackwidth || defaultSlackWidth);
   elem = document.querySelector("#slackwidth")
   if (elem) elem.value=slackwidth;
-});
 
-browser.storage.local.get("slackvisib", function(res) {
   var slackvisib = (res.slackvisib == null ? defaultVisib : res.slackvisib);
   elem = document.querySelector("#slackvisib")
   if (elem) elem.checked=slackvisib;
-});
 
-browser.storage.local.get("gdocwidth", function(res) {
   var gdocwidth = (res.gdocwidth || defaultGDocWidth);
   elem = document.querySelector("#gdocwidth")
   if (elem) elem.value=gdocwidth;
-});
 
-browser.storage.local.get("gdocvisib", function(res) {
   var gdocvisib = (res.gdocvisib == null ? defaultVisib : res.gdocvisib);
   elem = document.querySelector("#gdocvisib")
   if (elem) elem.checked=gdocvisib;
