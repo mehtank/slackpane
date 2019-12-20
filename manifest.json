@@ -1,7 +1,7 @@
 {
   "manifest_version": 2,
   "name": "Important hunt poll",
-  "version": "1.7",
+  "version": "2.0",
   "description": "Load gdocs/slack in iframes",
   "homepage_url": "https://wind-up-birds.org",
   "icons": {
@@ -31,7 +31,7 @@
       "matches": ["http://docs.google.com/spreadsheets/*", "https://docs.google.com/spreadsheets/*"],
       "js": ["browser-polyfill.js", "utils.js", "slackondoc.js"],
       "css": ["sidebars.css"],
-      "match_about_blank": true,
+      "match_about_blank": false,
       "all_frames": true,
       "run_at": "document_end"
     },
@@ -41,5 +41,11 @@
       "match_about_blank": true,
       "all_frames": true
     }
-  ]
+  ],
+  "browser_specific_settings": {
+    "gecko": {
+      "id": "slackpane@addons.mehtank.com",
+      "update_url": "http://ayeaye.mehtank.com/projects/slackpane/updates.json"
+    }
+  }
 }
