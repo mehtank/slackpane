@@ -17,19 +17,19 @@
     "default_popup": "popup.html"
   },
   "background": {
-    "scripts": ["background.js"]
+    "scripts": ["browser-polyfill.js", "background.js"]
   },
   "content_scripts": [
     {
       "matches": ["<all_urls>"],
       "exclude_matches": ["http://*.slack.com/*", "https://*.slack.com/*"],
-      "js": ["utils.js", "gdoconpuzzle.js"],
+      "js": ["browser-polyfill.js", "utils.js", "gdoconpuzzle.js"],
       "css": ["sidebars.css"],
       "run_at": "document_end"
     },
     {
       "matches": ["http://docs.google.com/spreadsheets/*", "https://docs.google.com/spreadsheets/*"],
-      "js": ["utils.js", "slackondoc.js"],
+      "js": ["browser-polyfill.js", "utils.js", "slackondoc.js"],
       "css": ["sidebars.css"],
       "match_about_blank": true,
       "all_frames": true,
