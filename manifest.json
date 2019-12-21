@@ -4,6 +4,12 @@
   "version": "2.0",
   "description": "Load gdocs/slack in iframes",
   "homepage_url": "https://wind-up-birds.org",
+  "browser_specific_settings": {
+    "gecko": {
+      "update_url": "http://ayeaye.mehtank.com/projects/slackpane/updates.json",
+      "id": "slackpane@addons.mehtank.com"
+    }
+  },
   "icons": {
     "48": "icons/uscensus.svg",
     "96": "icons/uscensus.svg"
@@ -41,11 +47,5 @@
       "match_about_blank": true,
       "all_frames": true
     }
-  ],
-  "browser_specific_settings": {
-    "gecko": {
-      "id": "slackpane@addons.mehtank.com",
-      "update_url": "http://ayeaye.mehtank.com/projects/slackpane/updates.json"
-    }
-  }
+  ]
 }
