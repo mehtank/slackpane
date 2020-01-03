@@ -1,8 +1,3 @@
-var defaultSites =  ["http://web.mit.edu/puzzle/www/*", "https://web.mit.edu/puzzle/www/*"].join('\n');
-var defaultSlackWidth = 50;
-var defaultGDocWidth = 40;
-var defaultVisib = true;
-
 var gettingAllStorageItems = browser.storage.local.get(null);
 
 gettingAllStorageItems.then((res) => {
@@ -10,19 +5,19 @@ gettingAllStorageItems.then((res) => {
   elem = document.querySelector("#puzzsites")
   if (elem) elem.value=puzzsites;
 
-  var slackwidth = (res.slackwidth || defaultSlackWidth);
+  var slackwidth = (res.slackwidth || defaultSWidth);
   elem = document.querySelector("#slackwidth")
   if (elem) elem.value=slackwidth;
 
-  var slackvisib = (res.slackvisib == null ? defaultVisib : res.slackvisib);
+  var slackvisib = (res.slackvisib == null ? defaultSVisib : res.slackvisib);
   elem = document.querySelector("#slackvisib")
   if (elem) elem.checked=slackvisib;
 
-  var gdocwidth = (res.gdocwidth || defaultGDocWidth);
+  var gdocwidth = (res.gdocwidth || defaultGWidth);
   elem = document.querySelector("#gdocwidth")
   if (elem) elem.value=gdocwidth;
 
-  var gdocvisib = (res.gdocvisib == null ? defaultVisib : res.gdocvisib);
+  var gdocvisib = (res.gdocvisib == null ? defaultGVisib : res.gdocvisib);
   elem = document.querySelector("#gdocvisib")
   if (elem) elem.checked=gdocvisib;
 });

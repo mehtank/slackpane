@@ -1,18 +1,9 @@
-// ==UserScript==
-// @name     GDoc on puzzle page
-// @include  http://*/*
-// ==/UserScript==
-
-var defaultSites =  ["http://web.mit.edu/puzzle/www/*", "https://web.mit.edu/puzzle/www/*"].join('\n');
-var defaultWidth = 40;
-var defaultVisib = true;
-
 var gettingAllStorageItems = browser.storage.local.get(null);
 
 gettingAllStorageItems.then((res) => {
     var puzzsites = (res.puzzsites || defaultSites);
-    var gdocwidth = (res.gdocwidth || defaultWidth);
-    var gdocvisib = (res.gdocvisib == null ? defaultVisib : res.gdocvisib);
+    var gdocwidth = (res.gdocwidth || defaultGWidth);
+    var gdocvisib = (res.gdocvisib == null ? defaultGVisib : res.gdocvisib);
 
     var sidebarWidth    = "" + (100-gdocwidth) + "%";
 

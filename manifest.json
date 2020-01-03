@@ -29,13 +29,13 @@
     {
       "matches": ["<all_urls>"],
       "exclude_matches": ["http://*.slack.com/*", "https://*.slack.com/*"],
-      "js": ["browser-polyfill.js", "utils.js", "gdoconpuzzle.js"],
+      "js": ["browser-polyfill.js", "defaults.js", "utils.js", "gdoconpuzzle.js"],
       "css": ["sidebars.css"],
       "run_at": "document_end"
     },
     {
       "matches": ["http://docs.google.com/spreadsheets/*", "https://docs.google.com/spreadsheets/*"],
-      "js": ["browser-polyfill.js", "utils.js", "slackondoc.js"],
+      "js": ["browser-polyfill.js", "defaults.js", "utils.js", "slackondoc.js"],
       "css": ["sidebars.css"],
       "match_about_blank": false,
       "all_frames": true,

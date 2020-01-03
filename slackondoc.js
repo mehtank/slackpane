@@ -1,13 +1,10 @@
-var defaultWidth = 50; 
-var defaultVisib = true;
-
 var gettingAllStorageItems = browser.storage.local.get(null);
 var gj = getJSON();
 
 Promise.all([gettingAllStorageItems, gj]).then((arr) => {
     res = arr[0];
-    var slackwidth = (res.slackwidth || defaultWidth);
-    var slackvisib = (res.slackvisib == null ? defaultVisib : res.slackvisib);
+    var slackwidth = (res.slackwidth || defaultSWidth);
+    var slackvisib = (res.slackvisib == null ? defaultSVisib : res.slackvisib);
 
     data = arr[1];
     var slacksites = data.map(({ drive_id }) => drive_id);
