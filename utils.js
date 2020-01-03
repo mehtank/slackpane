@@ -2,7 +2,7 @@ function setIframe(iframe, data, fromfield, tofield, fmt = (x)=>x ) {
     function search(puzz) {
         parser = document.createElement('a');
         parser.href = puzz[fromfield]
-        return !parser.hostname.includes("ignore.ignore") && window.location.href.includes(parser.pathname);
+        return parser.pathname.length > 1 && window.location.href.includes(parser.pathname);
     }
     puzzdata = data.filter(search);
     //console.log(puzzdata);
