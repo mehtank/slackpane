@@ -7,7 +7,7 @@
   "browser_specific_settings": {
     "gecko": {
       "update_url": "https://ayeaye.mehtank.com/projects/slackpane/updates.json",
-      "id": "slackpane@addons.mehtank.com"
+      "id": "{eec7f0f0-50ed-485e-9f79-42f2616cfd39}"
     }
   },
   "icons": {
