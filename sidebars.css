@@ -29,8 +29,10 @@ iframe.spSidebar {
 
 #spSlackPanel {
     z-index  : 99999;
+    border-left: 1px solid purple;
 }
 
 #spGdocPanel {
     z-index  : 999;
+    border-left: 1px solid green;
 }
