@@ -11,6 +11,7 @@ if(window.top!==window.self) {
       margin-left: 20px;                  \
   }                                       \
   .c-message__gutter,                     \
+  .c-message_kit__gutter__left,           \
   .p-classic_nav__right_header,           \
   .p-classic_nav__team_header,            \
   .p-classic_nav__model__buttons,         \
