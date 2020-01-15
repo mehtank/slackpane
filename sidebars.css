@@ -30,9 +30,11 @@ iframe.spSidebar {
 #spSlackPanel {
     z-index  : 99999;
     border-left: 1px solid purple;
+    background-color: hsla(300, 100%, 25%, 0.1);  /* purple with opacity */
 }
 
 #spGdocPanel {
     z-index  : 999;
     border-left: 1px solid green;
+    background-color: hsla(120, 100%, 50%, 0.1);  /* green with opacity */
 }
