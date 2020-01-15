@@ -72,7 +72,7 @@ function addListener(which, fn) {
     document.addEventListener('keydown', keyboardShortcutHandler);
 }
 
-function addIframe(divid, ifclass, width, visible, toggle=115, container=document.body) {
+function addIframe(divid, ifclass, width, visible, toggle=115, resizeContainer=true, container=document.body) {
     var iframe = document.createElement('iframe');
     iframe.className = ifclass;
 
@@ -87,8 +87,10 @@ function addIframe(divid, ifclass, width, visible, toggle=115, container=documen
 
     //-- Keyboard shortcut to show/hide our sidebar
     addListener(toggle, () => toggleSidebar(elem));
-    handleResize(elem);
-    doResize(elem);
+    if (resizeContainer) {
+      handleResize(elem);
+      doResize(elem);
+    }
 
     return {"div": elem, "iframe": iframe };
 }

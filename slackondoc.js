@@ -17,7 +17,8 @@ Promise.all([gettingAllStorageItems, gj]).then((arr) => {
 
         document.getElementsByTagName("html")[0].style.position = "relative";
 
-        elems = addIframe("spSlackPanel", "spSidebar", sidebarWidth, slackvisib);
+        // addIframe(divid, ifclass, width, visible, toggle=115, resizeContainer=true, container=document.body) {
+        elems = addIframe("spSlackPanel", "spSidebar", sidebarWidth, slackvisib, 115, false);
         iframe = elems.iframe;
 
         setIframe(iframe, data, "drive_uri", "slack_channel_id", (x) => `https://app.slack.com/client/T0G3PD729/${x}`);
