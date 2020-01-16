@@ -1,4 +1,6 @@
 function setIframe(iframe, data, fromfield, tofield, fmt = (x)=>x ) {
+    if (!(/(text|html)/i.test(document.contentType))) 
+        return false;
     function search(puzz) {
         parser = document.createElement('a');
         parser.href = puzz[fromfield]
