@@ -8,6 +8,8 @@ gettingAllStorageItems.then((res) => {
     var sidebarWidth    = "" + (100-gdocwidth) + "%";
 
     var hit = puzzsites.split('\n').reduce((hit, s) => hit || window.location.href.match(new RegExp(s)), null);
+    // Only hit pages that are text and/or html
+    hit = hit && (/(text|html)/i.test(document.contentType));
 
     if (hit) {
         document.getElementsByTagName("html")[0].style.position = "relative";
