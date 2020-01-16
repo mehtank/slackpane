@@ -1,8 +1,11 @@
 function setIframe(iframe, data, fromfield, tofield, fmt = (x)=>x ) {
     function search(puzz) {
         parser = document.createElement('a');
-        parser.href = puzz[fromfield]
-        return parser.pathname.length > 1 && window.location.href.includes(parser.pathname);
+        parser.href = puzz[fromfield];
+        return parser.pathname.length > 1
+            && window.location.href.includes(parser.pathname)
+            // Filter to simple website extensions
+            && !/\/[^.]*$|\.(htm|html|asp|php|shtml|cgi)$/.test(parser.pathname);
     }
     puzzdata = data.filter(search);
     //console.log(puzzdata);
